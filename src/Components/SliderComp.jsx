@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -6,14 +6,17 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import axiosInstance from "../Axios/Axios";
+import { Context } from "../Context/Context";
 const SliderComp = () => {
   const [recent, setRecent] = useState([]);
+  
   useEffect(() => {
     const fetchlatest = async () => {
       try {
         const response = await axiosInstance.get("/movies?sort=latest");
-        console.log("from sliders; loaded data", response.data);
+        // console.log("from sliders; loaded data", response.data);
         setRecent(response.data);
+        
       } catch (error) {
         console.log(error);
       }
