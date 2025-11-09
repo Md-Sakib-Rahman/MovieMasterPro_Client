@@ -73,8 +73,21 @@ const Register = () => {
 
       await updateUserProfile({
         displayName: user.name,
-        photoURL: user.photoUrl,
+        photoURL: user.photoURL,
       });
+      const userInfo = {
+        name: user.name,
+        email: user.email,
+        photoUrl: user.photoURL,
+        uid: user.uid,
+      };
+      const token = await user.getIdToken();
+      const res = await axiosInstance.post("/users", userInfo, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log("User saved to database:", res.data);
       navigate('/')
     }).catch((error) => {
     const errorCode = error.code;

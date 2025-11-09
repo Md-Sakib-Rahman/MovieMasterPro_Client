@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router";
 import { Context } from "../Context/Context";
+import axiosInstance from "../Axios/Axios";
 
 const Login = () => {
   const { login , signInWithGoogle, updateUserProfile} = useContext(Context);
@@ -28,8 +29,21 @@ const Login = () => {
 
       await updateUserProfile({
         displayName: user.name,
-        photoURL: user.photoUrl,
+        photoURL: user.photoURL,
       });
+      const userInfo = {
+        name: user.name,
+        email: user.email,
+        photoUrl: user.photoURL,
+        uid: user.uid,
+      };
+      const token = await user.getIdToken();
+      const res = await axiosInstance.post("/users", userInfo, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log("User saved to database:", res.data);
       // console.log(result)
       navigate('/')
     }).catch((error) => {
