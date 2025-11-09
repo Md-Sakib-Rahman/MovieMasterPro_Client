@@ -1,17 +1,57 @@
-import React, { useState } from 'react'
-import { Context } from './Context'
+import React, { useEffect, useState } from "react";
+import { Context } from "./Context";
+import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  updateProfile,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut
+} from "firebase/auth";
+import { auth } from "../Firebase/firebase.config";
 
-const ContextProvider = ({children}) => {
-  const [loader, setLoader] = useState(true)  
+
+const ContextProvider = ({ children }) => {
+  const [loader, setLoader] = useState(true);
+  const [user, setUser] = useState(null);
+  const provider = new GoogleAuthProvider();
+  //   fucntions ->
+  const signUp = (email, password) => {
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
+  const login = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password);
+  };
+
+  const updateUserProfile = (userObj) => {
+    return updateProfile(auth.currentUser, userObj);
+  };
+  const signInWithGoogle = ()=>{
+    return signInWithPopup(auth, provider)
+  }
+  const logOut = ()=>{
+    return signOut(auth)
+  }
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
   const data = {
     loader,
-    setLoader
-  }  
-  return (
-    <Context value={data}>
-        {children}
-    </Context>
-  )
-}
+    setLoader,
+    signUp,
+    login,
+    updateUserProfile,
+    signInWithGoogle,
+    user,
+    logOut
+  };
+  return <Context value={data}>{children}</Context>;
+};
 
-export default ContextProvider
+export default ContextProvider;

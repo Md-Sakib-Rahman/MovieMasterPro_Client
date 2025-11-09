@@ -1,7 +1,43 @@
-import React from "react";
-import { Link } from "react-router";
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router";
+import { Context } from "../Context/Context";
 
 const Login = () => {
+  const { login , signInWithGoogle, updateUserProfile} = useContext(Context);
+  const navigate = useNavigate()
+  const handleLogin = async(e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    await login(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log("user Signed In")
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage)
+      });
+  };
+  const handleGoogleSignIn = async()=>{
+    await signInWithGoogle().then(async(result) => {
+      console.log("signed in with google")
+      const user = result.user;
+
+      await updateUserProfile({
+        displayName: user.name,
+        photoURL: user.photoUrl,
+      });
+      // console.log(result)
+      navigate('/')
+    }).catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(errorCode, errorMessage)
+  });
+  }
   return (
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col lg:flex-row-reverse w-[350px]">
@@ -9,23 +45,30 @@ const Login = () => {
           <div className="text-center pt-10">
             <h1 className="text-xl font-bold">Login now!</h1>
           </div>
-          <div className="card-body">
+          <form onSubmit={handleLogin} className="card-body">
             <fieldset className="fieldset">
               <label className="label">Email</label>
-              <input type="email" className="input" placeholder="Email" />
+              <input type="email" className="input" placeholder="Email" name="email" />
               <label className="label">Password</label>
-              <input type="password" className="input" placeholder="Password" />
+              <input type="password" className="input" placeholder="Password" name="password"/>
               <div className="flex flex-col justify-center gap-2 mt-2">
-                <a className="link link-hover hover:text-primary">Forgot password?</a>
-                <Link to='/register' className="link link-hover hover:text-primary">Don't have an account?</Link>
+                <a className="link link-hover hover:text-primary">
+                  Forgot password?
+                </a>
+                <Link
+                  to="/register"
+                  className="link link-hover hover:text-primary"
+                >
+                  Don't have an account?
+                </Link>
               </div>
-              <button className="btn btn-primary mt-4 ">Login</button>
+              <button className="btn btn-primary mt-4 " type="submit">Login</button>
               <div className="flex justify-center items-center w-full">
                 <hr className="w-[45%]" />
                 <p className="text-center">or</p>
                 <hr className="w-[45%]" />
               </div>
-              <button className="btn bg-white text-black border-[#e5e5e5]">
+              <button onClick={handleGoogleSignIn} className="btn bg-white text-black border-[#e5e5e5]" type="button">
                 <svg
                   aria-label="Google logo"
                   width="16"
@@ -56,7 +99,7 @@ const Login = () => {
                 Login with Google
               </button>
             </fieldset>
-          </div>
+          </form>
         </div>
       </div>
     </div>
