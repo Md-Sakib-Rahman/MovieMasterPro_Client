@@ -33,7 +33,7 @@ const SliderComp = () => {
       }}
       navigation={false}
       modules={[Autoplay, Pagination, Navigation]}
-      className="mySwiper"
+      className="mySwiper "
     >
       {recent.map((data) => {
         return (
@@ -41,7 +41,7 @@ const SliderComp = () => {
             <SwiperSlide key={data._id} className="relative">
               <img
                 src={data.posterUrl}
-                className="w-full h-[90vh] object-center max-md:object-top object-contain "
+                className="w-full h-[90vh] object-center max-md:object-top object-contain max-md:object-cover "
                 alt=""
               />
               <div className="

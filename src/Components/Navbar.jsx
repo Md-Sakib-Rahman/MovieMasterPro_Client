@@ -9,7 +9,7 @@ const links = (
       <NavLink
         to="/"
         className={({ isActive }) =>
-          isActive ? "border-b-2 border-orange-500 rounded-none transition-all ease-in-out" : ""
+          isActive ? "border-b-2 border-orange-500 rounded-none transition-all ease-in-out font-bold" : " transition-all ease-in-out font-bold"
         }
       >
         Home
@@ -19,7 +19,7 @@ const links = (
       <NavLink
         to='/allmovies'
         className={({ isActive }) =>
-          isActive ? "border-b-2 border-orange-500 rounded-none transition-all ease-in-out" : ""
+          isActive ? "border-b-2 border-orange-500 rounded-none transition-all ease-in-out font-bold" : " transition-all ease-in-out font-bold"
         }
       >
         All Movies
@@ -29,7 +29,7 @@ const links = (
       <NavLink
         to='/mycollection'
         className={({ isActive }) =>
-          isActive ? "border-b-2 border-orange-500 rounded-none transition-all ease-in-out" : ""
+          isActive ? "border-b-2 border-orange-500 rounded-none transition-all ease-in-out font-bold" : " transition-all ease-in-out font-bold"
         }
       >
         My Collection
@@ -78,7 +78,7 @@ const linksMenu = (
   </>
 );
   return (
-    <div className="navbar bg-base-100/20 shadow-sm px-20 max-lg:px-2">
+    <div className="navbar bg-base-100/90 shadow-sm px-20 max-lg:px-2 fixed z-40">
       <div className="navbar-start">
         
         <a className="btn btn-ghost text-xl">Movie Master <span className="text-primary" >Pro</span></a>
