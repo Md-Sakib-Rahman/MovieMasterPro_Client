@@ -1,6 +1,6 @@
 import React from "react";
 import ThemeSwitch from "./ThemeSwitch";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 
 const Navbar = () => {
 const links = (
@@ -91,7 +91,7 @@ const linksMenu = (
       <div className="navbar-end flex justify-end items-center gap-5">
 
         <div>
-          <button className="btn btn-primary max-lg:hidden">Login</button>
+          <Link to='/login' className="btn btn-primary max-lg:hidden">Login</Link>
         </div>
         <div>
           <ThemeSwitch />
