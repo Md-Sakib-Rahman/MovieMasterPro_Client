@@ -1,2 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import "tailwindcss";
-@plugin "daisyui";
+@plugin "daisyui" {
+  themes: cupcake --default, forest --prefersdark;
+}
+@plugin "daisyui/theme" {
+  name: "cupcake";
+  default: true;
+  --color-primary: orange;
+  --color-secondary: black;
+  --text-primary: black;
+  --color-primary-content: black;
+}
+@plugin "daisyui/theme" {
+  name: "forest";
+  default: true;
+  --color-primary: orange;
+  --color-secondary: white;
+  --text-primary: white;
+  --color-primary-content: black;
+}
+html{
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+.mySwiper .swiper-pagination-bullet-active {
+  background-color: #7a3b00; /* Makes the active dot orange */
+  opacity: 1; /* Makes it fully opaque */
+}
