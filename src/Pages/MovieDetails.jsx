@@ -1,12 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import axiosInstance from "../Axios/Axios";
+import { Context } from "../Context/Context";
+import axiosSecureInstance from "../Axios/AxiosSecure";
 
 const MovieDetails = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState({});
   const [loader, setLoader] = useState(true);
+  const {user} = useContext(Context)
+  console.log(user)
   const navigate = useNavigate();
+
+  const addToWatchlist = async ()=>{
+    try{
+      const res = await axiosSecureInstance.post('/users/add-to-watchlist' , { movieId: id })
+    console.log(res.data);
+    }catch (error) {
+      console.log(error)
+    }
+  }
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -61,7 +75,7 @@ const MovieDetails = () => {
             <p className="font-bold ">Added By: <span>{movie.addedBy}</span></p>
           </div>
           <div className="mt-10">
-            <button className="btn btn-primary">Add To Watchlist</button>
+            <button onClick={addToWatchlist} className="btn btn-primary">Add To Watchlist</button>
           </div>
         </div>
       </div>
