@@ -1,8 +1,9 @@
 import React from 'react'
 import { Fade } from "react-awesome-reveal";
 import { LiaStarSolid } from "react-icons/lia";
+import { Link } from 'react-router';
 function Card({data}) {
-  const {title , rating, genre, releaseYear, posterUrl}  = data;
+  const {title , rating, genre, releaseYear, posterUrl, _id}  = data;
   return (
     <Fade
             delay={200} // Wait 200ms before starting
@@ -27,7 +28,7 @@ function Card({data}) {
         <h2 className='text-md font-bold  ' >{title}</h2> 
       </div> 
       <div className='w-full flex justify-center'>
-        <button className='btn hover:btn-primary'>Show Details</button>
+        <Link to={`/moviedetails/${_id}`} className='btn hover:btn-primary'>Show Details</Link>
       </div> 
     </div>
     </Fade>

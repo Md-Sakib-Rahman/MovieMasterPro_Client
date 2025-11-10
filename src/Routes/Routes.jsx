@@ -4,6 +4,8 @@ import HomePage from "../Pages/HomePage";
 import AllMovies from "../Pages/AllMovies";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
+import MovieDetails from "../Pages/MovieDetails";
+import PrivateRoutes from "./PrivateRoutes";
 
 
 export const routes = createBrowserRouter([
@@ -19,7 +21,7 @@ export const routes = createBrowserRouter([
         {
             
             path: '/allmovies',
-            element: <AllMovies/>
+            element: <PrivateRoutes><AllMovies/></PrivateRoutes>
         },
         {
             
@@ -30,6 +32,11 @@ export const routes = createBrowserRouter([
             
             path: '/register',
             element: <Register/>
+        },
+        {
+            
+            path: '/moviedetails/:id',
+            element: <PrivateRoutes><MovieDetails/></PrivateRoutes>
         },
     ]
   },
