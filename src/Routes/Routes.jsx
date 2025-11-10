@@ -6,6 +6,7 @@ import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import MovieDetails from "../Pages/MovieDetails";
 import PrivateRoutes from "./PrivateRoutes";
+import Watchlist from "../Pages/Watchlist";
 
 
 export const routes = createBrowserRouter([
@@ -37,6 +38,11 @@ export const routes = createBrowserRouter([
             
             path: '/moviedetails/:id',
             element: <PrivateRoutes><MovieDetails/></PrivateRoutes>
+        },
+        {
+            
+            path: '/watchlist',
+            element: <PrivateRoutes><Watchlist/></PrivateRoutes>
         },
     ]
   },

@@ -49,6 +49,7 @@ const Register = () => {
         email: email,
         photoUrl: photoUrl,
         uid: user.uid,
+        watchlist: []
       };
       const token = await user.getIdToken();
       const res = await axiosInstance.post("/users", userInfo, {
@@ -80,6 +81,7 @@ const Register = () => {
         email: user.email,
         photoUrl: user.photoURL,
         uid: user.uid,
+        watchlist: []
       };
       const token = await user.getIdToken();
       const res = await axiosInstance.post("/users", userInfo, {

@@ -36,6 +36,7 @@ const Login = () => {
         email: user.email,
         photoUrl: user.photoURL,
         uid: user.uid,
+        watchlist: []
       };
       const token = await user.getIdToken();
       const res = await axiosInstance.post("/users", userInfo, {

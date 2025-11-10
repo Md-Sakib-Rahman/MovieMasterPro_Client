@@ -11,7 +11,7 @@ const MovieDetails = () => {
     const fetchData = async () => {
       try {
         const data = await axiosInstance.get(`/movies/${id}`);
-        console.log(data.data);
+        // console.log(data.data);
         setMovie(data.data);
         setLoader(false)
       } catch (err) {
@@ -61,7 +61,7 @@ const MovieDetails = () => {
             <p className="font-bold ">Added By: <span>{movie.addedBy}</span></p>
           </div>
           <div className="mt-10">
-            <button className="btn btn-primary">Add To My Collection</button>
+            <button className="btn btn-primary">Add To Watchlist</button>
           </div>
         </div>
       </div>

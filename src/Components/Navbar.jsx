@@ -52,6 +52,18 @@ const Navbar = () => {
           My Collection
         </NavLink>
       </li>
+      <li>
+        <NavLink
+          to="/watchlist"
+          className={({ isActive }) =>
+            isActive
+              ? "border-b-2 border-orange-500 rounded-none transition-all ease-in-out font-bold"
+              : " transition-all ease-in-out font-bold"
+          }
+        >
+          Watchlist
+        </NavLink>
+      </li>
     </>
   );
   const linksMenu = (
@@ -90,6 +102,18 @@ const Navbar = () => {
           }
         >
           My Collection
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/watchlist"
+          className={({ isActive }) =>
+            isActive
+              ? "py-2 w-full text-black bg-amber-500/80 block rounded-sm text-md"
+              : "py-2 w-full hover:text-black hover:bg-amber-500/80 block rounded-sm text-md"
+          }
+        >
+          Watchlist
         </NavLink>
       </li>
     </>

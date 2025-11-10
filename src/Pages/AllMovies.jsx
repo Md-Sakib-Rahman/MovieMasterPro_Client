@@ -10,7 +10,7 @@ const AllMovies = () => {
     const fetchData = async()=>{
         try{
             const movies = await axiosInstance.get('/movies')
-            console.log(movies.data)
+            // console.log(movies.data)
             setMovies(movies.data)
             
         }catch(error){

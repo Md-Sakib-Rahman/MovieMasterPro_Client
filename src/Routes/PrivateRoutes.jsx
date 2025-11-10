@@ -3,9 +3,18 @@ import { Context } from '../Context/Context'
 import { Navigate } from 'react-router'
 
 const PrivateRoutes = ({children}) => {
-  const {user} = useContext(Context)  
-  
-  return user ? ( children ) :  (<Navigate to='/login'></Navigate>)
+  const {user , loader} = useContext(Context)  
+  if (loader) {
+    return (
+      <div className='flex justify-center items-center h-screen'>
+        <span className="loading loading-spinner text-warning w-10"></span>
+      </div>
+    );
+  }
+  if (user) {
+    return children;
+  }
+  return <Navigate to="/login" state={{ from: location }} replace />
 }
 
 export default PrivateRoutes
