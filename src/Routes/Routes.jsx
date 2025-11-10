@@ -7,6 +7,9 @@ import Register from "../Pages/Register";
 import MovieDetails from "../Pages/MovieDetails";
 import PrivateRoutes from "./PrivateRoutes";
 import Watchlist from "../Pages/Watchlist";
+import AddMoviePage from "../Pages/AddMoviePage";
+import MyCollection from "../Pages/MyCollection";
+import UpdateMovie from "../Pages/UpdataMovie";
 
 
 export const routes = createBrowserRouter([
@@ -43,6 +46,21 @@ export const routes = createBrowserRouter([
             
             path: '/watchlist',
             element: <PrivateRoutes><Watchlist/></PrivateRoutes>
+        },
+        {
+            
+            path: '/addmovies',
+            element: <PrivateRoutes><AddMoviePage/></PrivateRoutes>
+        },
+        {
+            
+            path: '/mycollection',
+            element: <PrivateRoutes><MyCollection/></PrivateRoutes>
+        },
+        {
+            
+            path: '/movies/update/:id',
+            element: <PrivateRoutes><UpdateMovie/></PrivateRoutes>
         },
     ]
   },

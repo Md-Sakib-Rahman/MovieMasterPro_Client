@@ -64,6 +64,24 @@ const Navbar = () => {
           Watchlist
         </NavLink>
       </li>
+      {
+        user ? (
+          <li>
+        <NavLink
+          to="/addmovies"
+          className={({ isActive }) =>
+            isActive
+              ? "border-b-2 border-orange-500 rounded-none transition-all ease-in-out font-bold"
+              : " transition-all ease-in-out font-bold"
+          }
+        >
+          Add Movies
+        </NavLink>
+      </li>
+        ):(
+          ''
+        )
+      }
     </>
   );
   const linksMenu = (
@@ -116,6 +134,23 @@ const Navbar = () => {
           Watchlist
         </NavLink>
       </li>
+      {
+        user ? (
+          <NavLink
+          to="/addmovies"
+          className={({ isActive }) =>
+            isActive
+              ? "py-2 w-full text-black bg-amber-500/80 block rounded-sm text-md"
+              : "py-2 w-full hover:text-black hover:bg-amber-500/80 block rounded-sm text-md"
+          }
+        >
+          AddMovies
+        </NavLink>
+        ) : 
+        (
+          ''
+        )
+      }
     </>
   );
   return (
