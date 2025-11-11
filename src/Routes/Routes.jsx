@@ -10,12 +10,14 @@ import Watchlist from "../Pages/Watchlist";
 import AddMoviePage from "../Pages/AddMoviePage";
 import MyCollection from "../Pages/MyCollection";
 import UpdateMovie from "../Pages/UpdataMovie";
+import ErrorPage from "../Pages/ErrorPage";
 
 
 export const routes = createBrowserRouter([
   {
     path: "/",
     element: <Root/>,
+    errorElement: <ErrorPage/>,
     children: [
         {
             

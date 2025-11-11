@@ -1,9 +1,10 @@
 import React, { useContext } from 'react'
 import { Context } from '../Context/Context'
-import { Navigate } from 'react-router'
+import { Navigate, useLocation } from 'react-router'
 
 const PrivateRoutes = ({children}) => {
   const {user , loader} = useContext(Context)  
+  const location = useLocation();
   if (loader) {
     return (
       <div className='flex justify-center items-center h-screen'>
