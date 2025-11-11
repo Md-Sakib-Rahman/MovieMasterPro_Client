@@ -2,15 +2,16 @@ import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { Context } from "../Context/Context";
 import axiosInstance from "../Axios/Axios";
+import { Bounce, toast, ToastContainer } from "react-toastify";
 const Register = () => {
   const { signUp, updateUserProfile, signInWithGoogle } = useContext(Context);
-  const [error, setError] = useState("");
+  
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(""); // Clear old errors
+   
     setLoading(true);
 
     const form = e.target;
@@ -20,18 +21,52 @@ const Register = () => {
     const password = form.password.value;
 
     if (password.length < 6) {
-      setError("Password must be at least 6 characters long.");
+      
       setLoading(false);
+      toast.error("Password must be at least 6 characters long.", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+              });
       return;
     }
     if (!/[A-Z]/.test(password)) {
-      setError("Password must contain at least one uppercase letter.");
+      
       setLoading(false);
+      toast.error("Password must contain at least one uppercase letter.", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+              });
       return;
     }
     if (!/[a-z]/.test(password)) {
-      setError("Password must contain at least one lowercase letter.");
+      
       setLoading(false);
+      toast.error("Password must contain at least one lowercase letter.", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+              });
+      
       return;
     }
 
@@ -57,14 +92,34 @@ const Register = () => {
           Authorization: `Bearer ${token}`,
         },
       });
+      toast.success("user Signed In", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+              });
       console.log("User saved to database:", res.data);
 
       setLoading(false);
       navigate("/");
     } catch (err) {
       console.error(err);
-      setError(err.message);
-      setLoading(false);
+      toast.error(err.message, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+              });
     }
   };
   const handleGoogleSignIn = async()=>{
@@ -89,16 +144,68 @@ const Register = () => {
           Authorization: `Bearer ${token}`,
         },
       });
+      toast.success("user Signed In", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+              });
       console.log("User saved to database:", res.data);
       navigate('/')
     }).catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
     console.log(errorCode, errorMessage)
+    toast.error(errorMessage, {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+              transition: Bounce,
+            });
   });
   }
-  return (
+  return loading ? (
+    <div className="flex justify-center items-center h-screen">
+       <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+      />
+      <span className="loading loading-spinner text-warning w-10"></span>
+    </div>
+  ) :  (
     <div className="hero bg-base-200 min-h-screen">
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+      />
       <div className="hero-content flex-col lg:flex-row-reverse w-[350px]">
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <div className="text-center pt-10">

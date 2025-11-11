@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { Context } from "../Context/Context";
 import axiosInstance from "../Axios/Axios";
+import { Bounce, toast, ToastContainer } from "react-toastify";
 
 const Login = () => {
   const { login, signInWithGoogle, updateUserProfile } = useContext(Context);
@@ -18,17 +19,50 @@ const Login = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log("user Signed In");
+        toast.success("user Signed In", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
+        toast.error(errorMessage, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
       });
   };
   const handleGoogleSignIn = async () => {
     await signInWithGoogle()
       .then(async (result) => {
         console.log("signed in with google");
+        toast.success("user Signed In", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
         const user = result.user;
 
         await updateUserProfile({
@@ -50,6 +84,7 @@ const Login = () => {
         });
         console.log("User saved to database:", res.data);
         // console.log(result)
+        
         if (location.state) {
           const state = location.state.from.pathname;
           navigate(state);
@@ -61,10 +96,36 @@ const Login = () => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
+        toast.error(errorMessage, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
       });
   };
   return (
     <div className="hero bg-base-200 min-h-screen">
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+      />
+      {/* Same as */}
+      <ToastContainer />
       <div className="hero-content flex-col lg:flex-row-reverse w-[350px]">
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <div className="text-center pt-10">
