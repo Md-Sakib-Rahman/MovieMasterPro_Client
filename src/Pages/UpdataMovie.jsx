@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router';
 import axiosInstance from '../Axios/Axios'; 
 import axiosSecureInstance from '../Axios/AxiosSecure'; 
 import { Context } from '../Context/Context'; 
+import { Bounce, toast } from 'react-toastify';
 
 const UpdateMovie = () => {
   const { id } = useParams(); 
@@ -11,7 +12,6 @@ const UpdateMovie = () => {
 
   const [movie, setMovie] = useState(null); 
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
 
  
   useEffect(() => {
@@ -23,7 +23,18 @@ const UpdateMovie = () => {
         setMovie(res.data);
       } catch (err) {
         console.error(err);
-        setError("Failed to load movie data.");
+        toast.error("Failed to load movie data.", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+              });
+        
       } finally {
         setLoading(false);
       }
@@ -34,7 +45,7 @@ const UpdateMovie = () => {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
+    
     setLoading(true);
 
     const form = e.target;
@@ -59,13 +70,33 @@ const UpdateMovie = () => {
       
       await axiosSecureInstance.patch(`/movies/${id}`, updatedData);
       
-      
+       toast.success("Movie Updated successfully!", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+              transition: Bounce,
+            });
       
       navigate('/mycollection');
 
     } catch (err) {
       console.error("Error updating movie:", err);
-      setError(err.response?.data?.message || 'Failed to update movie.');
+      toast.error('Failed to update movie.', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+              });
     } finally {
       setLoading(false);
     }
@@ -80,10 +111,10 @@ const UpdateMovie = () => {
     );
   }
 
-  if (error && !movie) {
+  if (!movie) {
     return (
       <div className='flex justify-center items-center h-screen'>
-        <p className='text-xl text-error'>{error}</p>
+        <p className='text-xl text-error'>Error</p>
       </div>
     );
   }

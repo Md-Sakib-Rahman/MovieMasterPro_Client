@@ -3,6 +3,7 @@ import { useNavigate, useParams, Link } from "react-router";
 import axiosInstance from "../Axios/Axios";
 import { Context } from "../Context/Context";
 import axiosSecureInstance from "../Axios/AxiosSecure";
+import { Bounce, toast, ToastContainer } from "react-toastify";
 
 const MovieDetails = () => {
   const { id } = useParams();
@@ -18,9 +19,31 @@ const MovieDetails = () => {
       const res = await axiosSecureInstance.post("/users/add-to-watchlist", {
         movieId: id,
       });
+      toast.success("Movie added to watchlist successfully!", {
+                          position: "top-right",
+                          autoClose: 5000,
+                          hideProgressBar: false,
+                          closeOnClick: true,
+                          pauseOnHover: true,
+                          draggable: true,
+                          progress: undefined,
+                          theme: "light",
+                          transition: Bounce,
+                        });
       console.log(res.data)
     } catch (error) {
       console.log(error)
+      toast.error("Error while adding movie to watchlist :", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+              });
     }
   };
 
@@ -34,9 +57,31 @@ const MovieDetails = () => {
 
     try {
       await axiosSecureInstance.delete(`/movies/${movieToDelete._id}`)
+      toast.success("Movie deleted successfully!", {
+                          position: "top-right",
+                          autoClose: 5000,
+                          hideProgressBar: false,
+                          closeOnClick: true,
+                          pauseOnHover: true,
+                          draggable: true,
+                          progress: undefined,
+                          theme: "light",
+                          transition: Bounce,
+                        });
       
     } catch (error) {
       console.error("Error deleting movie:", error);
+      toast.error("Error deleting movie:", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+              });
 
     }finally {
       setMovieToDelete(null); 
@@ -70,6 +115,19 @@ const MovieDetails = () => {
     </div>
   ) : (
     <>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+      />
       <div className="pt-20 w-full min-h-screen flex flex-col items-center justify-center">
         <div className="w-[80%] mx-auto mb-4">
           <button

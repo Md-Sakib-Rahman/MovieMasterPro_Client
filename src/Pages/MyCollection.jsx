@@ -3,6 +3,7 @@ import { Context } from "../Context/Context";
 import axiosSecureInstance from "../Axios/AxiosSecure"
 import Card from "../Components/Card"
 import { Link } from "react-router";
+import { Bounce, toast } from "react-toastify";
 
 const MyCollection = () => {
   const { user, loader: authLoader } = useContext(Context)
@@ -20,6 +21,17 @@ const MyCollection = () => {
         setMovies(res.data)
       } catch (error) {
         console.error("Error fetching my collection:", error)
+        toast.error("Error fetching my collection:", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+              });
       } finally {
         setMovieLoader(false);
       }
@@ -39,8 +51,30 @@ const MyCollection = () => {
       setMovies((currentMovies) =>
         currentMovies.filter((movie) => movie._id !== movieToDelete._id)
       );
+      toast.success("Movie deleted successfully!", {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Bounce,
+                  });
     } catch (error) {
       console.error("Error deleting movie:", error);
+      toast.error("Error deleting movie:", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+              });
     }finally {
       setMovieToDelete(null); 
       document.getElementById('delete_modal').close(); 
