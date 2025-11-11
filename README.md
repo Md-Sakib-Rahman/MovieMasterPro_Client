@@ -25,4 +25,4 @@
 ## Repositories
 
 * **Client-Side:** [https://github.com/your-username/movie-master-pro-client]
-* **Server-Side:** [github.com/Md-Sakib-Rahman/MovieMasterPro_Client]
+* **Server-Side:** [https://github.com/Md-Sakib-Rahman/MovieMasterPro_Client]
