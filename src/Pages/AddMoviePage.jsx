@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router';
 import { Context } from '../Context/Context'; 
 import axiosSecureInstance from '../Axios/AxiosSecure'; 
+import { Bounce, toast, ToastContainer } from 'react-toastify';
 
 const AddMoviePage = () => {
   const { user } = useContext(Context);
@@ -35,10 +36,32 @@ const AddMoviePage = () => {
       const res = await axiosSecureInstance.post('/movies', movieData);
       
       console.log('Movie added:', res.data);
+      toast.success("Movie added successfully!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
       navigate('/mycollection');
 
     } catch (err) {
       console.error("Error adding movie:", err);
+      toast.error("Error adding movie", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+              });
     } finally {
       setLoading(false);
     }
@@ -46,6 +69,7 @@ const AddMoviePage = () => {
 
   return (
     <div className="pt-20 min-h-screen bg-base-200">
+      
       <div className="container mx-auto px-4 py-12 max-w-4xl">
         <h2 className="text-3xl font-bold text-center mb-10">Add a New Movie</h2>
         

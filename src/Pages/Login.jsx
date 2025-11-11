@@ -124,8 +124,7 @@ const Login = () => {
         theme="light"
         transition={Bounce}
       />
-      {/* Same as */}
-      <ToastContainer />
+      
       <div className="hero-content flex-col lg:flex-row-reverse w-[350px]">
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <div className="text-center pt-10">
