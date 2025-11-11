@@ -1,16 +1,28 @@
-# React + Vite
+# MovieMaster Pro
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Live Site URL:** []
 
-Currently, two official plugins are available:
+  A comprehensive movie management system where users can browse, manage, and organize their favorite movies with advanced filtering and personal collections. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+ **Firebase Authentication:** Secure login and registration with both Email/Password and Google Sign-In. 
+ **Full CRUD Functionality:** Users can add their own movies, update them, and delete them from the database. 
+ **Personalized "My Collection" Page:** A private route that displays only the movies added by the logged-in user. 
+ **Advanced Filtering & Sorting:** Filter movies by genre and rating ($gte) [cite: 106, 108]  , and view top-rated or recently added films on the home page. 
+ **User Watchlist:** A dedicated feature allowing users to save movies (added by anyone) to a personal watchlist. 
+ **Theme Toggle:** A theme controller to switch the entire site between light and dark modes. 
+ **Dashboard Statistics:** The home page displays dynamic stats, including the total number of movies and registered users. 
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Technologies Used
 
-## Expanding the ESLint configuration
+* **Client:** React, React Router, Tailwind CSS, DaisyUI
+* **Server:** Node.js, Express.js
+* **Database:** MongoDB (with Mongoose)
+* **Authentication:** Firebase Authentication (with Firebase Admin SDK on the server)
+* **API Client:** Axios
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Repositories
+
+* **Client-Side:** [https://github.com/your-username/movie-master-pro-client]
+* **Server-Side:** [github.com/Md-Sakib-Rahman/MovieMasterPro_Client]

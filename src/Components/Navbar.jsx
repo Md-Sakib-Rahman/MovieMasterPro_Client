@@ -154,14 +154,14 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100/90 shadow-sm px-20 max-lg:px-2 fixed z-40">
+    <div className="navbar bg-base-100/90 shadow-sm px-16 max-lg:px-2 fixed z-40">
       <div className="navbar-start">
         <a className="btn btn-ghost text-xl max-sm:text-sm">
           Movie Master <span className="text-primary">Pro</span>
         </a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 flex justify-center items-center gap-10">
+        <ul className="menu menu-horizontal px-1 flex justify-center items-center gap-4">
           {links}
         </ul>
       </div>

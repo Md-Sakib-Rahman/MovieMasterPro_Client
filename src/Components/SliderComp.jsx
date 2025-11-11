@@ -7,6 +7,7 @@ import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import axiosInstance from "../Axios/Axios";
 import { Context } from "../Context/Context";
+import { Link } from "react-router";
 const SliderComp = () => {
   const [recent, setRecent] = useState([]);
   
@@ -56,21 +57,13 @@ const SliderComp = () => {
               ">
                 <h2 className="text-4xl font-bold ">{data.title}</h2>
                 <h2 className="w-[400px] h-[100px] ">{data.plotSummary}</h2>
-                <button className="btn bg-primary text-white border-white/0 shadow-xl hover:border-2  hover:border-orange-500 hover:bg-base-100 hover:text-orange-500 ">View Details</button>
+                <Link to={`/moviedetails/${data._id}`} className="btn bg-primary text-white border-white/0 shadow-xl hover:border-2  hover:border-orange-500 hover:bg-base-100 hover:text-orange-500 ">View Details</Link>
               </div>
             </SwiperSlide>
           </>
         );
       })}
-      {/* <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide> */}
+      
     </Swiper>
   );
 };
