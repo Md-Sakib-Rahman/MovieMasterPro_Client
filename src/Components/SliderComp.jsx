@@ -10,7 +10,7 @@ import { Context } from "../Context/Context";
 import { Link } from "react-router";
 const SliderComp = () => {
   const [recent, setRecent] = useState([]);
-  
+  const [loader , setLoader] = useState(true)
   useEffect(() => {
     const fetchlatest = async () => {
       try {
@@ -20,10 +20,19 @@ const SliderComp = () => {
         
       } catch (error) {
         console.log(error);
+      }finally{
+        setLoader(false)
       }
     };
     fetchlatest();
   }, []);
+  if(loader){
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <span className="loading loading-spinner text-warning w-10"></span>
+      </div>
+    )
+  }
   return (
     <Swiper
       spaceBetween={30}
