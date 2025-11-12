@@ -7,6 +7,7 @@ import { Bounce, toast, ToastContainer } from 'react-toastify'
 const Watchlist = () => {
   const {user} = useContext(Context)
   const [watchlistArr , setWatchlistArr] =useState([])
+  const [loader, setLoader] = useState(true)
   useEffect(()=>{
     const fetchData = async ()=>{
       
@@ -15,8 +16,11 @@ const Watchlist = () => {
         const watchlist = [...data.data.watchlist]
         console.log(watchlist)
         setWatchlistArr(watchlist)
+
       }catch(err){
         console.log(err)
+      }finally{
+        setLoader(false)
       }
 
     }
@@ -54,7 +58,14 @@ const Watchlist = () => {
               });
     }
   }
-  return (
+  if(loader){
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <span className="loading loading-spinner text-warning w-10"></span>
+      </div>
+    )
+  }
+  return  (
     <div className='pt-20 min-h-screen'>
       <ToastContainer
         position="top-right"
