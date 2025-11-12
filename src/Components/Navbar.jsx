@@ -136,7 +136,8 @@ const Navbar = () => {
       </li>
       {
         user ? (
-          <NavLink
+          <li>
+            <NavLink
           to="/addmovies"
           className={({ isActive }) =>
             isActive
@@ -146,9 +147,14 @@ const Navbar = () => {
         >
           AddMovies
         </NavLink>
+          </li>
         ) : 
         (
-          ''
+          <li>
+            <Link to="/login" className="btn btn-primary  ">
+              Login
+            </Link>
+          </li>
         )
       }
     </>
