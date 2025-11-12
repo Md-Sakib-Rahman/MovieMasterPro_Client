@@ -174,6 +174,7 @@ const Navbar = () => {
                   src={user.photoURL}
                   alt={user.displayName || "User"}
                   title={user.displayName || "User"}
+                  referrerpolicy="no-referrer"
                 />
               </div>
             </label>
