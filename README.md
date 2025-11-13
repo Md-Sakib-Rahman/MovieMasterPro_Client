@@ -1,6 +1,6 @@
 # MovieMaster Pro
 
-**Live Site URL:** []
+**Live Site URL:** [https://movie-master-pro-client.vercel.app]
 
   A comprehensive movie management system where users can browse, manage, and organize their favorite movies with advanced filtering and personal collections. 
 
