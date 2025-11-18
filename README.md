@@ -47,8 +47,6 @@
 * **Node.js:** JavaScript runtime environment.
 * **Express.js:** Web framework for handling API routes.
 * **MongoDB:** NoSQL database for storing movie and user data.
-* **Mongoose:** ODM for MongoDB schema validation.
-* **JWT (JSON Web Token):** For secure API access and authorization.
 
 ---
 
