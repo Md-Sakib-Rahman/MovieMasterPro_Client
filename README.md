@@ -3,7 +3,7 @@
 **A comprehensive MERN Stack Movie Management System.**
 
 [![Live Site](https://img.shields.io/badge/Live%20Site-Visit%20Now-brightgreen?style=for-the-badge&logo=vercel)](https://movie-master-pro-client.vercel.app)
-[![Client Repo](https://img.shields.io/badge/GitHub-Client%20Code-blue?style=for-the-badge&logo=github)](https://github.com/your-username/movie-master-pro-client)
+[![Client Repo](https://img.shields.io/badge/GitHub-Client%20Code-blue?style=for-the-badge&logo=github)](https://github.com/Md-Sakib-Rahman/MovieMasterPro_Client.git)
 [![Server Repo](https://img.shields.io/badge/GitHub-Server%20Code-blue?style=for-the-badge&logo=github)](https://github.com/Md-Sakib-Rahman/MovieMasterPro_Server.git)
 
 ---
@@ -52,26 +52,15 @@
 
 ---
 
-## 📦 Main Dependencies
+## 📦📦 Server Side
 
-Here are the key packages used in this project:
-
-**Client Side:**
-* `axios`: HTTP client for API requests.
-* `firebase`: Authentication SDK.
-* `react-hook-form`: For efficient form handling.
-* `react-icons`: For scalable UI icons.
-* `sweetalert2` / `react-hot-toast`: For popup notifications.
-* `swiper`: For movie sliders/carousels.
-
-**Server Side:**
 * `cors`: Middleware to enable Cross-Origin Resource Sharing.
 * `dotenv`: For managing environment variables.
 * `cookie-parser`: To parse cookies for JWT authentication.
 * `jsonwebtoken`: For generating access tokens.
 
 ---
-### Dependencies
+## 📦📦Client Side Dependencies
 ```bash
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -88,7 +77,7 @@ Here are the key packages used in this project:
     "tailwindcss": "^4.1.17"
   },
 ```
-### Dev Dependencies
+## 📦📦 Dev Dependencies
 ```bash
   "devDependencies": {
     "@eslint/js": "^9.36.0",
@@ -110,10 +99,10 @@ Follow these steps to run the project on your local machine:
 ### 1. Clone the Repositories
 ```bash
 # Clone Client
-git clone [https://github.com/your-username/movie-master-pro-client.git](https://github.com/your-username/movie-master-pro-client.git)
+git clone [https://github.com/your-username/movie-master-pro-client.git](https://github.com/Md-Sakib-Rahman/MovieMasterPro_Client.git)
 
 # Clone Server
-git clone [https://github.com/Md-Sakib-Rahman/MovieMasterPro_Client.git](https://github.com/Md-Sakib-Rahman/MovieMasterPro_Client.git)
+git clone [https://github.com/Md-Sakib-Rahman/MovieMasterPro_Client.git](https://github.com/Md-Sakib-Rahman/MovieMasterPro_Server.git)
 
 ```
 ### 2. Server-Side Setup
