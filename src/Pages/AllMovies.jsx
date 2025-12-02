@@ -1,18 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axiosInstance from "../Axios/Axios";
 import Card from "../Components/Card";
+import { Context } from "../Context/Context";
 
 const AllMovies = () => {
+  const {genreFromHome} = useContext(Context)
   const genres = ["Action", "Drama", "Comedy", "Sci-Fi", "Thriller", "Animation", "Crime"];
   const [movies, setMovies] = useState([]);
   const [movieLoader, setMovieLoader] = useState(true);
-  const [selectedGenre, setSelectedGenre] = useState("");
+  const [selectedGenre, setSelectedGenre] = useState(genreFromHome );
   const [minRating, setMinRating] = useState("");
+  
   const [filters, setFilters] = useState({
-    genre: "",
+    genre: genreFromHome || "",
     minRating: "",
   });
   useEffect(() => {
+    
+    console.log("genre from home", genreFromHome)
     const fetchData = async () => {
       try {
         setMovieLoader(true);

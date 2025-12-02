@@ -16,6 +16,7 @@ const ContextProvider = ({ children }) => {
   const [loader, setLoader] = useState(true);
   const [darkmode, setDarkMode] = useState(false);
   const [user, setUser] = useState(null);
+  const [genreFromHome, setGenreFromHome] =useState("")
   const provider = new GoogleAuthProvider();
   //   fucntions ->
   const signUp = (email, password) => {
@@ -53,7 +54,9 @@ const ContextProvider = ({ children }) => {
     user,
     logOut,
     darkmode, 
-    setDarkMode
+    setDarkMode,
+    genreFromHome,
+    setGenreFromHome
   };
   return <Context value={data}>{children}</Context>;
 };

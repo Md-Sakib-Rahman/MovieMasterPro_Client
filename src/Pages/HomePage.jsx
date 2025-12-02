@@ -5,6 +5,7 @@ import TopRatedMovies from '../Components/TopRatedMovies'
 import { Context } from '../Context/Context'
 import GenreSection from '../Components/GenreSection'
 import AboutPlatform from '../Components/AboutPlatform'
+import Newsletter from '../Components/NewsLetter'
 
 const HomePage = () => {
   
@@ -24,8 +25,12 @@ const HomePage = () => {
         <GenreSection/>
       </div>
       <div>
+        <Newsletter/>
+      </div>
+      <div>
         <AboutPlatform/>
       </div>
+
     </div>
   )
 }
