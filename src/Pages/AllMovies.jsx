@@ -22,11 +22,11 @@ const AllMovies = () => {
       try {
         setMovieLoader(true);
         const params = new URLSearchParams();
-        if (filters.genre) {
-          params.append("genre", filters.genre);
+        if (selectedGenre) {
+          params.append("genre", selectedGenre);
         }
-        if (filters.minRating) {
-          params.append("minRating", filters.minRating);
+        if (minRating) {
+          params.append("minRating", minRating);
         }
         const movies = await axiosInstance.get(`/movies?${params.toString()}`);
         // console.log(movies.data)
@@ -38,7 +38,7 @@ const AllMovies = () => {
       }
     };
     fetchData();
-  }, [filters]);
+  }, [minRating, selectedGenre, genreFromHome]);
 
   const handleFilter = () => {
     
@@ -61,11 +61,6 @@ const AllMovies = () => {
     setSelectedGenre(prev => prev === genre ? '' : genre);
   };
   return movieLoader ? (
-    <div className="flex justify-center items-center h-screen">
-      <span className="loading loading-spinner text-warning w-10"></span>
-    </div>
-  ) : (
-    //
     <div className="pt-20 px-10 ">
       <h2 className="text-center font-bold text-3xl border-b-2 border-b-orange-500 w-[150px] mx-auto mt-10">
         All movie
@@ -75,7 +70,7 @@ const AllMovies = () => {
           {genres.map(genre => (
             <button
               key={genre}
-              className={`btn btn-sm ${selectedGenre === genre ? 'btn-primary' : 'btn-outline'}`}
+              className={`btn btn-sm transition-all duration-200 ${selectedGenre === genre ? 'btn-primary' : 'btn-outline'}`}
               onClick={() => handleGenreClick(genre)}
             >
               {genre}
@@ -91,9 +86,46 @@ const AllMovies = () => {
             value={minRating}
             onChange={(e) => setMinRating(e.target.value)}
           />
-          <button className="btn btn-primary" onClick={handleFilter}>
-            Apply Filters
+          
+          <button className="btn btn-ghost" onClick={handleClear}>
+            Clear All
           </button>
+        </div>
+      </div>
+      <div className="flex justify-center items-start h-screen">
+      <span className="loading loading-spinner text-warning w-10"></span>
+    </div>
+    </div>
+  ) : (
+    //
+    <div className="pt-20 px-10 ">
+      <h2 className="text-center font-bold text-3xl border-b-2 border-b-orange-500 w-[150px] mx-auto mt-10">
+        All movie
+      </h2>
+      <div className='flex flex-col items-center justify-center gap-4 my-8 p-4 bg-base-200 rounded-lg w-[90%] md:w-[60%] mx-auto'>
+        <div className="flex flex-wrap justify-center gap-2">
+          {genres.map(genre => (
+            <button
+              key={genre}
+              className={`btn btn-sm transition-all duration-200 ${selectedGenre === genre ? 'btn-primary' : 'btn-outline'}`}
+              onClick={() => handleGenreClick(genre)}
+            >
+              {genre}
+            </button>
+          ))}
+        </div>
+        
+        <div className="flex flex-wrap justify-center gap-4">
+          <input
+            type="number"
+            placeholder="Min Rating (e.g., 7)"
+            className="input input-bordered"
+            value={minRating}
+            onChange={(e) => setMinRating(e.target.value)}
+          />
+          {/* <button className="btn btn-primary" onClick={handleFilter}>
+            Apply Filters
+          </button> */}
           <button className="btn btn-ghost" onClick={handleClear}>
             Clear All
           </button>
@@ -101,9 +133,13 @@ const AllMovies = () => {
       </div>
 
       <div className="grid grid-cols-4 max-xl:grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 gap-10 my-10 max-w-[1280px] mx-auto">
-        {movies.map((movie) => {
+        {
+        movies != "" ? (movies.map((movie) => {
           return <Card key={movie._id} data={movie} />;
-        })}
+        })) : (<div className="min-h-[50vh] text-center col-span-full flex flex-col justify-center items-center ">
+          <h2 className=" text-xl font-bold"> No Movies Found </h2>
+        </div>)
+        }
       </div>
     </div>
   );

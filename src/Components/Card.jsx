@@ -11,8 +11,8 @@ function Card({data}) {
             triggerOnce // Only animate once
             fraction={0.5} // Start animation when element is 50% visible
           >
-    <div className='w-[250px] h-[390px] mx-auto hover:w-[250px] transition-all ease-in-out duration-100' > 
-      <img className='h-[295px] w-full object-cover' src={posterUrl} alt="" />
+    <div className='w-[250px] hover:w-[270px] h-[390px] mx-auto  transition-all ease-in-out duration-300' > 
+      <img className='  h-[295px] w-full object-cover' src={posterUrl} alt="" />
       <div className='flex justify-between items-center text-[12px] mt-2'>
         
         <div className='flex justify-start items-center gap-2 '>
