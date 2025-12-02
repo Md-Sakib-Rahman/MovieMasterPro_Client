@@ -54,12 +54,12 @@ const SliderComp = () => {
             <SwiperSlide key={data._id} className="relative">
               <img
                 src={data.posterUrl}
-                className="w-full h-[90vh] object-center max-md:object-top object-contain max-md:object-cover "
+                className="w-full h-[70vh] object-center max-md:object-top object-contain max-md:object-cover "
                 alt=""
               />
               <div className="
               absolute bottom-0  
-              bg-linear-to-t from-base-100 to-transparent w-full h-1/2 max-md:h-2/3 
+              bg-linear-to-t from-base-100 to-transparent w-full h-4/5 max-md:h-4/5 
               flex flex-col justify-end items-start 
               px-20 pb-10 gap-5 max-md:px-10 
               max-md:text-md

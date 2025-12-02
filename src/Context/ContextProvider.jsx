@@ -14,6 +14,7 @@ import { auth } from "../Firebase/firebase.config";
 
 const ContextProvider = ({ children }) => {
   const [loader, setLoader] = useState(true);
+  const [darkmode, setDarkMode] = useState(false);
   const [user, setUser] = useState(null);
   const provider = new GoogleAuthProvider();
   //   fucntions ->
@@ -50,7 +51,9 @@ const ContextProvider = ({ children }) => {
     updateUserProfile,
     signInWithGoogle,
     user,
-    logOut
+    logOut,
+    darkmode, 
+    setDarkMode
   };
   return <Context value={data}>{children}</Context>;
 };

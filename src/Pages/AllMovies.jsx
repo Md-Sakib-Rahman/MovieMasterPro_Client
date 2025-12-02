@@ -61,7 +61,7 @@ const AllMovies = () => {
     </div>
   ) : (
     //
-    <div className="pt-20">
+    <div className="pt-20 px-10 ">
       <h2 className="text-center font-bold text-3xl border-b-2 border-b-orange-500 w-[150px] mx-auto mt-10">
         All movie
       </h2>
@@ -95,7 +95,7 @@ const AllMovies = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-5 max-xl:grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 gap-10 my-10">
+      <div className="grid grid-cols-4 max-xl:grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 gap-10 my-10 max-w-[1280px] mx-auto">
         {movies.map((movie) => {
           return <Card key={movie._id} data={movie} />;
         })}

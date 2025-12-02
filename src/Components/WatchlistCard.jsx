@@ -20,9 +20,9 @@ const WatchlistCard = ({ movieId , onRemove}) => {
     fetchdata()
   }, [movieId]);
   return (
-    <div className="grid grid-cols-3 mx-auto items-center gap-4 w-full my-5">
+    <div className="flex flex-col mx-auto items-center gap-2 w-full my-5">
       <div className="flex justify-start items-center ">
-        <img className="w-[120px] h-[120px] object-contain" src={movie.posterUrl} alt="" />
+        <img className="w-[400px] h-[300px] object-contain" src={movie.posterUrl} alt="" />
       </div>
       <div className=" text-center">
         <p className="font-bold max-sm:text-sm">{movie.title}</p>

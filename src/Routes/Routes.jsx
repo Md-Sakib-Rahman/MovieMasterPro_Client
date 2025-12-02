@@ -11,6 +11,8 @@ import AddMoviePage from "../Pages/AddMoviePage";
 import MyCollection from "../Pages/MyCollection";
 import UpdateMovie from "../Pages/UpdataMovie";
 import ErrorPage from "../Pages/ErrorPage";
+import About from "../Pages/About";
+import FAQ from "../Pages/FAQ";
 
 
 export const routes = createBrowserRouter([
@@ -27,7 +29,7 @@ export const routes = createBrowserRouter([
         {
             
             path: '/allmovies',
-            element: <PrivateRoutes><AllMovies/></PrivateRoutes>
+            element: <AllMovies/>
         },
         {
             
@@ -63,6 +65,16 @@ export const routes = createBrowserRouter([
             
             path: '/movies/update/:id',
             element: <PrivateRoutes><UpdateMovie/></PrivateRoutes>
+        },
+        {
+            
+            path: '/about',
+            element: <About/>
+        },
+        {
+            
+            path: '/faq',
+            element: <FAQ/>
         },
     ]
   },

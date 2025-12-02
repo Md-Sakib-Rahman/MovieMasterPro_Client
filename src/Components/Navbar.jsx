@@ -42,6 +42,33 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
+          to="/about"
+          className={({ isActive }) =>
+            isActive
+              ? "border-b-2 border-orange-500 rounded-none transition-all ease-in-out font-bold"
+              : " transition-all ease-in-out font-bold"
+          }
+        >
+          About
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/faq"
+          className={({ isActive }) =>
+            isActive
+              ? "border-b-2 border-orange-500 rounded-none transition-all ease-in-out font-bold"
+              : " transition-all ease-in-out font-bold"
+          }
+        >
+          FAQ
+        </NavLink>
+      </li>
+       {
+          user? (
+            <li>
+       
+        <NavLink
           to="/mycollection"
           className={({ isActive }) =>
             isActive
@@ -52,7 +79,12 @@ const Navbar = () => {
           My Collection
         </NavLink>
       </li>
-      <li>
+          ):(" ")
+        }
+      
+        {
+          user ? (
+            <li>
         <NavLink
           to="/watchlist"
           className={({ isActive }) =>
@@ -64,6 +96,10 @@ const Navbar = () => {
           Watchlist
         </NavLink>
       </li>
+          ) : (" ")
+        }
+
+      
       {
         user ? (
           <li>
@@ -112,6 +148,32 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
+          to="/about"
+          className={({ isActive }) =>
+            isActive
+              ? "py-2 w-full text-black bg-amber-500/80 block rounded-sm text-md"
+              : "py-2 w-full hover:text-black hover:bg-amber-500/80 block rounded-sm text-md"
+          }
+        >
+          About
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/faq"
+          className={({ isActive }) =>
+            isActive
+              ? "py-2 w-full text-black bg-amber-500/80 block rounded-sm text-md"
+              : "py-2 w-full hover:text-black hover:bg-amber-500/80 block rounded-sm text-md"
+          }
+        >
+          FAQ
+        </NavLink>
+      </li>
+      {
+        user ? (
+          <li>
+        <NavLink
           to="/mycollection"
           className={({ isActive }) =>
             isActive
@@ -122,7 +184,11 @@ const Navbar = () => {
           My Collection
         </NavLink>
       </li>
-      <li>
+        ) : (" ")
+      }
+      {
+        user ? (
+          <li>
         <NavLink
           to="/watchlist"
           className={({ isActive }) =>
@@ -134,6 +200,8 @@ const Navbar = () => {
           Watchlist
         </NavLink>
       </li>
+        ) : (" ")
+      }
       {
         user ? (
           <li>
@@ -151,7 +219,7 @@ const Navbar = () => {
         ) : 
         (
           <li>
-            <Link to="/login" className="btn btn-primary  ">
+            <Link to="/login" className="btn btn-primary mt-5 ">
               Login
             </Link>
           </li>
@@ -160,18 +228,19 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100/90 shadow-sm px-16 max-lg:px-2 fixed z-40">
-      <div className="navbar-start">
-        <a className="btn btn-ghost text-xl max-sm:text-sm">
+    <div className="bg-base-100/90 shadow-sm  fixed z-40  w-full">
+     <div className="navbar   max-lg:px-2 2xl:max-w-[1280px] lg:max-w-[1124px] max-xl:px-10 max-md:px-10 max-sm:px-0 mx-auto ">
+       <div className="navbar-start">
+        <Link to="/" className="btn btn-ghost text-xl max-sm:text-sm">
           Movie Master <span className="text-primary">Pro</span>
-        </a>
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 flex justify-center items-center gap-4">
+        <ul className="menu menu-horizontal px-1 flex justify-center items-center gap-2 max-xl:gap-1">
           {links}
         </ul>
       </div>
-      <div className="navbar-end flex justify-end items-center gap-5">
+      <div className="navbar-end flex justify-end items-center gap-5 max-sm:gap-0">
         {user ? (
           <div className="dropdown dropdown-end relative">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
@@ -238,6 +307,7 @@ const Navbar = () => {
           {linksMenu}
         </ul>
       </div>
+     </div>
     </div>
   );
 };
